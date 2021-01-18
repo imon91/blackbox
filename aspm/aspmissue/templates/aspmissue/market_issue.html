@@ -1,0 +1,67 @@
+
+ {% extends 'aspmissue/base.html' %}
+   {% load static %}
+   {% block content %}
+
+
+<div  class="table-responsive">
+
+    <h1  style="text-align: center" >Market All Issue</h1>
+
+
+                                            <table class="table table-centered mb-0 test " id="grouptable">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Model Name</th>
+                                                        <th>Issue Name</th>
+
+                                                        <th>imei </th>
+                                                        <th>issue source</th>
+                                                        <th>problem</th>
+                                                        <th>qc findings  </th>
+                                                        <th>hw findings</th>
+                                                        <th>root cause</th>
+                                                        <th>evidence</th>
+
+
+
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                {% for issue in issues %}
+
+
+                                                <tr>
+                                                       <td> {{issue.model }}</td>
+                                                       <td> {{issue.issue_name }}</td>
+                                                       <td> {{issue.imei }}</td>
+                                                       <td> {{issue.issue_source }}</td>
+                                                       <td> {{issue.problem }}</td>
+                                                       <td> {{issue.qc_findings }}</td>
+                                                       <td> {{issue.hw_findings }}</td>
+                                                       <td> {{issue.root_cause }}</td>
+                                                       <td><img style="height: 50px; width: 50px" src="{{issue.evidence.url }}" /> </td>
+
+
+
+
+
+
+
+
+                                                       <td> </td>
+                                                       <td> </td>
+                                                       <td class="editbtn" data-id=" " data-type="createdby">  </td>
+
+                                                </tr>
+                                                {% endfor %}
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+{% endblock %}

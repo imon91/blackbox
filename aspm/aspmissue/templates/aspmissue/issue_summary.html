@@ -1,0 +1,153 @@
+ {% extends 'aspmissue/base.html' %}
+   {% load static %}
+   {% block content %}
+       <form method="post" id="forminsert">
+
+                    <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                       <span id="success"></span>
+                                        <div  class="table-responsive">
+                                            <input id="myInput"  type="text" placeholder="search..."  style="float: left;  background-color: #36404a; color: #909aa5; margin-bottom: 1%; border-radius: 7%;padding: 5px;" />
+
+                                            <table class="table table-centered mb-0 test " id="grouptable">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Model Name</th>
+                                                        <th>Software Version</th>
+
+                                                        <th>Issue Number </th>
+                                                        <th>Expected Date By Pm</th>
+                                                        <th>Actual Date By Pm</th>
+                                                        <th>FeedBack Expected Date  </th>
+                                                        <th>FeedBack Actual Date  </th>
+                                                        <th>New Issue</th>
+                                                        <th>Re-open Issue</th>
+                                                        <th>closed Issue</th>
+                                                        <th>Is Mp</th>
+                                                        <th>Delay By</th>
+                                                        <th>Delay PM</th>
+                                                        <th> Delay QC</th>
+                                                        <th> QC Remarks</th>
+
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                {% for summary in issue_summary %}
+
+
+                                                <tr>
+                                                       <td> {{summary.model.modelname  }}</td>
+                                                       <td> {{summary.software.software_name  }}</td>
+                                                       <td> {{summary.issue_number_version_wise }}</td>
+                                                       <td> {{summary.expected_software_date }}</td>
+                                                       <td> {{summary.actual_software_date }}</td>
+                                                       <td> {{summary.feedback_expected_date }}</td>
+                                                       <td> {{summary.feedback_actual_date }}</td>
+                                                       <td> {{summary.total_issue }}</td>
+                                                       <td> {{summary.reopen_issue}}</td>
+                                                       <td> {{summary.closed }}</td>
+                                                       <td> {{summary.is_mp }}</td>
+                                                       <td> {{summary.delay }}</td>
+                                                       <td> {{summary.delay_by_pm }}</td>
+                                                       <td> {{summary.delay_by_qc }}</td>
+                                                       <td> {{summary.remarks }}</td>
+
+
+
+
+
+
+                                                       <td> </td>
+                                                       <td> </td>
+                                                       <td class="editbtn" data-id=" " data-type="createdby">  </td>
+
+                                                </tr>
+                                                {% endfor %}
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div> <!-- end .table-responsive-->
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                    </div> <!-- end row -->
+
+         </form>
+                  <h1 class="btn-info  " style="text-align: center" > Major Issue</h1>
+
+                                                {% for issue_details in issue_detail %}
+
+                                     <div class="alert alert-warning" style="text-align: center">
+                                     <strong></strong> {{ issue_details.issue }}</div>
+
+
+                                                {% endfor %}
+
+  <div  class="table-responsive">
+
+    <h1  style="text-align: center" > ASPM Issue</h1>
+
+
+                                            <table class="table table-centered mb-0 test " id="grouptable">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Model Name</th>
+                                                        <th>Issue Name</th>
+
+                                                        <th>imei </th>
+                                                        <th>issue source</th>
+                                                        <th>problem</th>
+                                                        <th>qc findings  </th>
+                                                        <th>hw findings</th>
+                                                        <th>root cause</th>
+                                                        <th>evidence</th>
+
+
+
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                {% for analysis in issue_analysis %}
+
+
+                                                <tr>
+                                                       <td> {{analysis.model }}</td>
+                                                       <td> {{analysis.issue_name }}</td>
+                                                       <td> {{analysis.imei }}</td>
+                                                       <td> {{analysis.issue_source }}</td>
+                                                       <td> {{analysis.problem }}</td>
+                                                       <td> {{analysis.qc_findings }}</td>
+                                                       <td> {{analysis.hw_findings }}</td>
+                                                       <td> {{analysis.root_cause }}</td>
+                                                       <td><img style="height: 50px; width: 50px" src="{{analysis.evidence.url }}" /> </td>
+
+
+
+
+
+
+
+
+                                                       <td> </td>
+                                                       <td> </td>
+                                                       <td class="editbtn" data-id=" " data-type="createdby">  </td>
+
+                                                </tr>
+                                                {% endfor %}
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+{% endblock %}
+
